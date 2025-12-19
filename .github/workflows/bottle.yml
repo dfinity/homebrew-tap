@@ -118,8 +118,8 @@ jobs:
         uses: actions/github-script@v8
         with:
           script: |
-            // We verified above that this is not an external PR, and that these required checks are passing
-            for (const check of JSON.parse(process.env.REQUIRED_CHECKS).concat(["External PR Ruleset"])) {
+            // We verified above that these required checks are passing
+            for (const check of JSON.parse(process.env.REQUIRED_CHECKS)) {
               await github.rest.checks.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
