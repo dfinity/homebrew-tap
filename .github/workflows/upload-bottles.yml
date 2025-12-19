@@ -27,6 +27,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Unbork linuxbrew ruby install
+        if: ${{ runner.os == 'Linux' }}
+        run: sudo chmod +t /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/bundle/ruby
+
       - name: Set up Git
         run: |
           git config --global user.name "github-actions[bot]"
