@@ -25,11 +25,15 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Cache Homebrew Bundler RubyGems
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ steps.set-up-homebrew.outputs.gems-path }}
           key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
           restore-keys: ${{ matrix.os }}-rubygems-
+
+      - name: Unbork linuxbrew ruby install
+        if: ${{ runner.os == 'Linux' }}
+        run: sudo chmod +t /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/bundle/ruby
 
       - run: brew test-bot --only-cleanup-before
 
