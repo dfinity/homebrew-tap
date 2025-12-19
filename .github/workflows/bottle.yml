@@ -39,10 +39,6 @@ jobs:
               .statusCheckRollup
               | map(select(
                 (
-                  .status != "COMPLETED"
-                  and .name != "bottle:command"
-                )
-                or (
                   (.name | contains(":required"))
                   and .name != "confirm-publish:required"
                   and .conclusion != "SUCCESS"
