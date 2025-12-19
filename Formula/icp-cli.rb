@@ -12,7 +12,9 @@ class IcpCli < Formula
   depends_on "zlib"
 
   def install
-    system "cargo", "install", *std_cargo_args(root: libexec, path: "crates/icp-cli")
+    with_env(ICP_CLI_VERSION: version.to_s) do
+      system "cargo", "install", *std_cargo_args(root: libexec, path: "crates/icp-cli")
+    end
 
     keg_launcher = Formula["icp-cli-network-launcher"].opt_bin/"icp-cli-network-launcher"
     icp_env = {
