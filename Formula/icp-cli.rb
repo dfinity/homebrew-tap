@@ -1,8 +1,8 @@
 class IcpCli < Formula
   desc "Development tool for building and deploying canisters on ICP"
   homepage "https://github.com/dfinity/icp-cli"
-  url "https://github.com/dfinity/icp-cli/archive/refs/tags/v0.1.0-beta.2.tar.gz"
-  sha256 "e3ee62316142805aa5254c61cfb6bbb8aa6579c746538db7792d777edd62b576"
+  url "https://github.com/dfinity/icp-cli/archive/refs/tags/v0.1.0-beta.3.tar.gz"
+  sha256 "6a7740f4d4b3171ad53ef614f0311e502dad527d8427e63d78ee90afdf2a8c74"
   license "Apache-2.0"
 
   bottle do
@@ -14,20 +14,11 @@ class IcpCli < Formula
 
   depends_on "rust" => :build
   depends_on "ic-wasm"
-  depends_on "icp-cli-network-launcher"
   depends_on "openssl@3"
   depends_on "zlib"
 
   def install
-    with_env(ICP_CLI_VERSION: version.to_s) do
-      system "cargo", "install", *std_cargo_args(root: libexec, path: "crates/icp-cli")
-    end
-
-    keg_launcher = Formula["icp-cli-network-launcher"].opt_bin/"icp-cli-network-launcher"
-    icp_env = {
-      ICP_CLI_NETWORK_LAUNCHER_PATH: "${ICP_CLI_NETWORK_LAUNCHER_PATH:-#{keg_launcher}}",
-    }
-    (bin/"icp").write_env_script libexec/"bin/icp", icp_env
+    system "cargo", "install", *std_cargo_args(root: libexec, path: "crates/icp-cli")
   end
 
   test do
