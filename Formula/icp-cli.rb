@@ -18,7 +18,7 @@ class IcpCli < Formula
   depends_on "zlib"
 
   def install
-    system "cargo", "install", *std_cargo_args(root: libexec, path: "crates/icp-cli")
+    system "cargo", "install", *std_cargo_args(path: "crates/icp-cli")
   end
 
   test do
