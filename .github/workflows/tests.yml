@@ -33,7 +33,7 @@ jobs:
 
       - name: Unbork linuxbrew ruby install
         if: ${{ runner.os == 'Linux' }}
-        run: sudo chmod +t /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/bundle/ruby
+        run: sudo chmod +t /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/bundle/ruby/*/gems
 
       - run: brew test-bot --only-cleanup-before
 
