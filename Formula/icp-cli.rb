@@ -17,6 +17,10 @@ class IcpCli < Formula
   depends_on "openssl@3"
   depends_on "zlib"
 
+  on_linux do
+    depends_on "dbus"
+  end
+
   def install
     system "cargo", "install", *std_cargo_args(path: "crates/icp-cli")
   end
