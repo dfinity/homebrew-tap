@@ -17,6 +17,14 @@ brew "<formula>"
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
 
+## Releasing
+
+To make a new release, update the download URL and sha2 at the top of the formula in a PR branch (you do not need to touch the bottle section). Then *after* brew CI passes, add the label `!add-bottles` to your PR. You will usually need to close and reopen the PR after this, and then if it has been approved it can be merged even if it shows CI as still running. If there are any edits you make to the PR afterwards you'll need to rerun `!add-bottles`.
+
+If the release publishing action fails for whatever reason, manually rerun it from the Actions page using the last commit ID *you* made in the PR (not the bot's commit, and not the PR merge commit).
+
+PRs that *aren't* releases should be labeled `merge-without-publishing`. 
+
 ## License
 
 This project is licensed under the [Apache-2.0](./LICENSE) license.
