@@ -1,4 +1,4 @@
-class IcpCliATBeta < Formula
+class IcpCliBeta < Formula
   desc "Development tool for building and deploying canisters on ICP"
   homepage "https://github.com/dfinity/icp-cli"
   url "https://github.com/dfinity/icp-cli/archive/refs/tags/v0.1.0.tar.gz"
