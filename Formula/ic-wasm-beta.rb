@@ -6,10 +6,10 @@ class IcWasmBeta < Formula
   license "Apache-2.0"
 
   bottle do
-    root_url "https://github.com/dfinity/homebrew-tap/releases/download/ic-wasm-0.9.9"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "385bffb18d2419b63445016f3d4e0cc44ca6e1691d1c533e8576e140089ed797"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "e9d2debe8fb02d3ae45f2766e0d935dc9a05573e730f438196db221b99cb65be"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "720add4e02008bc67f891f1c76e8b5b066f1202a9b80e2d6e93aca41729ff0b6"
+    root_url "https://github.com/dfinity/homebrew-tap/releases/download/ic-wasm-beta-0.9.9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "930a066c876fe942c7b460b27ba60b9700fccdeaf6c7adbfc642ed7179dea1f3"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "4b30d1e03299963e6fc6a5d4dbef9ce63dd8a51d8eb08cc603025a06ea664eda"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0aa10e057eba3b8e6dbe2def1d4f0b0802ba771bd940bf43636a0e131d4e6bd8"
   end
 
   depends_on "rust" => :build
