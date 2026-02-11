@@ -14,6 +14,8 @@ class IcWasmBeta < Formula
 
   depends_on "rust" => :build
 
+  conflicts_with "ic-wasm", because: "both install an `ic-wasm` binary"
+
   def install
     system "cargo", "install", *std_cargo_args
   end

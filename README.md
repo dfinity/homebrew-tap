@@ -1,6 +1,6 @@
 # Dfinity Tap
 
-This tap contains `icp-cli-beta`, released more often than the `icp-cli` formula available in homebrew-core. The binaries use the same names, so it's recommended to `brew unlink icp-cli` or `brew uninstall icp-cli` first.
+This tap contains `icp-cli-beta`, released more often than the `icp-cli` formula available in homebrew-core. The binaries use the same names, so it's necessary to `brew uninstall icp-cli` first.
 
 ## How do I install these formulae?
 

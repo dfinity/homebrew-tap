@@ -13,9 +13,11 @@ class IcpCliBeta < Formula
   end
 
   depends_on "rust" => :build
-  depends_on "ic-wasm"
+  depends_on "ic-wasm-beta"
   depends_on "openssl@3"
   depends_on "zlib"
+
+  conflicts_with "icp-cli", because: "both install an `icp` binary"
 
   on_linux do
     depends_on "dbus"
