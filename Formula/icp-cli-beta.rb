@@ -17,11 +17,11 @@ class IcpCliBeta < Formula
   depends_on "openssl@3"
   depends_on "zlib"
 
-  conflicts_with "icp-cli", because: "both install an `icp` binary"
-
   on_linux do
     depends_on "dbus"
   end
+
+  conflicts_with "icp-cli", because: "both install an `icp` binary"
 
   def install
     system "cargo", "install", *std_cargo_args(path: "crates/icp-cli")
