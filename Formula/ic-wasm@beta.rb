@@ -1,4 +1,4 @@
-class IcWasm < Formula
+class IcWasmATBeta < Formula
   desc "CLI tool for performing Wasm transformations specific to ICP canisters"
   homepage "https://github.com/dfinity/ic-wasm"
   url "https://github.com/dfinity/ic-wasm/archive/refs/tags/0.9.9.tar.gz"
