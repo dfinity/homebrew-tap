@@ -13,7 +13,7 @@ class IcpCliBeta < Formula
   end
 
   depends_on "rust" => :build
-  depends_on "ic-wasm-beta"
+  depends_on "ic-wasm"
   depends_on "openssl@3"
   depends_on "zlib"
 
