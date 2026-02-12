@@ -7,9 +7,9 @@ class IcpCliBeta < Formula
 
   bottle do
     root_url "https://github.com/dfinity/homebrew-tap/releases/download/icp-cli-beta-0.1.0"
-    sha256 cellar: :any,                 arm64_sequoia: "d525523575db53d1cca97b44a09f27f602cc1f12d2516d9377ca2ddba39714d6"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "10b5a6c06f78059bec675dfb02833f43c5be542681cf4502e126887ee1bd9d4f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ae25eb45fcf44bbe7c39d1cb6d7322eb397f91b58d5560df3bc12151fcff0c7a"
+    sha256 cellar: :any,                 arm64_sequoia: "87c5e37a17f0363b2ed97b639db875540c921a156a661d4234c14d335f7b7750"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "31a49400b4a560b2f469f60c49daf1e2c20345d67bb5ca8a0eb29f995d5eeac3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4c22222ae4d177c60f11bb22499627b166d8c418931e37de125e2f04a97acbe3"
   end
 
   depends_on "rust" => :build
