@@ -34,7 +34,7 @@ jobs:
       - name: Unbork linuxbrew ruby install
         if: ${{ runner.os == 'Linux' }}
         run: |
-          sudo chown -R $(whoami) /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/bundle/ruby/*/gems
+          sudo chown -R "$(whoami)" /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/bundle/ruby/*/gems
           sudo chmod +t /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/bundle/ruby/*/gems
 
       - run: brew test-bot --only-cleanup-before

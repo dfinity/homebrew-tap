@@ -29,7 +29,9 @@ jobs:
 
       - name: Unbork linuxbrew ruby install
         if: ${{ runner.os == 'Linux' }}
-        run: sudo chmod +t /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/bundle/ruby/*/gems
+        run: |
+          sudo chown -R "$(whoami)" /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/bundle/ruby/*/gems
+          sudo chmod +t /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/bundle/ruby/*/gems
 
       - name: Set up Git
         run: |
