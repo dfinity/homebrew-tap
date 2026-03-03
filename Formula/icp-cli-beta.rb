@@ -1,15 +1,15 @@
 class IcpCliBeta < Formula
   desc "Development tool for building and deploying canisters on ICP"
   homepage "https://github.com/dfinity/icp-cli"
-  url "https://github.com/dfinity/icp-cli/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "98e79229b3b89b77aaa6237a5540ca719586e17501c7886dbfd5faf0a32d2364"
+  url "https://github.com/dfinity/icp-cli/archive/refs/tags/v0.2.0-beta.0.tar.gz"
+  sha256 "6e0feff2db5e78891150928e896f4312cf7f4e03c6a38d111d8ddd12ca0f4ec4"
   license "Apache-2.0"
 
   bottle do
-    root_url "https://github.com/dfinity/homebrew-tap/releases/download/icp-cli-beta-0.1.0"
-    sha256 cellar: :any,                 arm64_sequoia: "87c5e37a17f0363b2ed97b639db875540c921a156a661d4234c14d335f7b7750"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "31a49400b4a560b2f469f60c49daf1e2c20345d67bb5ca8a0eb29f995d5eeac3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4c22222ae4d177c60f11bb22499627b166d8c418931e37de125e2f04a97acbe3"
+    root_url "https://github.com/dfinity/homebrew-tap/releases/download/icp-cli-beta-0.2.0-beta.0"
+    sha256 cellar: :any,                 arm64_sequoia: "00a3ab671fd2be28dd8d2bbd1b9109dceef833c8b7e955292854e4f2e25a7cac"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "75d2a464329ede7f68411bda8cffd559dd92f0d293a5ac05d4a8ea995fef4d9e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e521b07e536894c02141d8ff5917f69d9f14e897d42f68e54572a50403f2fe47"
   end
 
   depends_on "rust" => :build
