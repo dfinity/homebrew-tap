@@ -27,28 +27,28 @@ assert_line() {
     exit 1
   fi
 }
-assert_line 4  'version "v'
-assert_line 17 'sha256 "'
-assert_line 21 'sha256 "'
-assert_line 28 'sha256 "'
-assert_line 32 'sha256 "'
+assert_line 4  'version "'
+assert_line 14 'sha256 "'
+assert_line 18 'sha256 "'
+assert_line 26 'sha256 "'
+assert_line 30 'sha256 "'
 
 # Map line numbers to targets
 declare -A line_target=(
-  [17]=aarch64-unknown-linux-gnu
-  [21]=x86_64-unknown-linux-gnu
-  [28]=aarch64-apple-darwin
-  [32]=x86_64-apple-darwin
+  [14]=aarch64-apple-darwin
+  [18]=x86_64-apple-darwin
+  [26]=aarch64-unknown-linux-gnu
+  [30]=x86_64-unknown-linux-gnu
 )
 
 # Read file into array
 mapfile -t lines < "$file"
 
 # Update version (line 4, array index 3)
-lines[3]="  version \"${tag}\""
+lines[3]="  version \"${version}\""
 
 # Update sha256 lines
-for lineno in 17 21 28 32; do
+for lineno in 14 18 26 30; do
   target="${line_target[$lineno]}"
   sha=$(curl -sfL "${base}/icp-cli-${target}.tar.xz.sha256" | awk '{print $1}')
   idx=$((lineno - 1))
