@@ -1,0 +1,39 @@
+name: Update formula from icp-cli release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version without v prefix (e.g., 0.3.0-beta.0)"
+        required: true
+
+jobs:
+  update-formula:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      VERSION: ${{ inputs.version }}
+      TAG: v${{ inputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch checksums and update formula
+        run: ./scripts/update-icp-cli-beta.sh "$VERSION"
+
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          branch="update/icp-cli-beta-${VERSION}"
+          git checkout -b "${branch}"
+          git add Formula/icp-cli-beta.rb
+          git commit -m "icp-cli-beta ${VERSION}"
+          git push -u origin "${branch}"
+          gh pr create \
+            --title "icp-cli-beta ${VERSION}" \
+            --body "Update icp-cli-beta to ${VERSION} from https://github.com/dfinity/icp-cli/releases/tag/${TAG}" \
+            --label "merge-without-publishing"
