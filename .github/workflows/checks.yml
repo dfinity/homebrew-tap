@@ -20,6 +20,7 @@ jobs:
 
   install:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - runner: macos-15
@@ -29,6 +30,7 @@ jobs:
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
       - name: Set up tap
         run: |
           tap_dir="$(brew --repository)/Library/Taps/dfinity/homebrew-tap"
