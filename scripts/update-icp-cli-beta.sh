@@ -6,8 +6,8 @@ if [[ "$version" == v* ]]; then
   echo "Error: version must not start with 'v' (got: $version)" >&2
   exit 1
 fi
-if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]+$ ]]; then
-  echo "Error: version must match a.b.c-beta.x (got: $version)" >&2
+if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-beta\.[0-9]+)?$ ]]; then
+  echo "Error: version must match a.b.c or a.b.c-beta.x (got: $version)" >&2
   exit 1
 fi
 
