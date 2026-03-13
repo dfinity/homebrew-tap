@@ -1,0 +1,55 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  audit:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up tap
+        run: |
+          tap_dir="$(brew --repository)/Library/Taps/dfinity/homebrew-tap"
+          mkdir -p "$(dirname "$tap_dir")"
+          ln -s "$GITHUB_WORKSPACE" "$tap_dir"
+      - name: Audit formula
+        run: brew audit --formula dfinity/tap/icp-cli-beta
+
+  install:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+          - runner: macos-15-intel
+          - runner: ubuntu-22.04
+          - runner: ubuntu-22.04-arm
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: Set up tap
+        run: |
+          tap_dir="$(brew --repository)/Library/Taps/dfinity/homebrew-tap"
+          mkdir -p "$(dirname "$tap_dir")"
+          ln -s "$GITHUB_WORKSPACE" "$tap_dir"
+      - name: Install formula
+        run: brew install dfinity/tap/icp-cli-beta
+      - name: Test
+        run: icp --version
+
+  required:
+    name: checks:required
+    needs: [audit, install]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: check audit result
+        if: ${{ needs.audit.result != 'success' }}
+        run: exit 1
+      - name: check install result
+        if: ${{ needs.install.result != 'success' }}
+        run: exit 1

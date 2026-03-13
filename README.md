@@ -2,30 +2,21 @@
 
 This tap contains `icp-cli-beta`, released more often than the `icp-cli` formula available in homebrew-core. The binaries use the same names, so it's necessary to `brew uninstall icp-cli` first.
 
-## How do I install these formulae?
+## Installation
 
-`brew install dfinity/tap/<formula>`
-
-Or `brew tap dfinity/tap` and then `brew install <formula>`.
-
-Or, in a `brew bundle` `Brewfile`:
-
-```ruby
-tap "dfinity/tap"
-brew "<formula>"
+```sh
+brew install dfinity/tap/icp-cli-beta
 ```
-
-## Documentation
-
-`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
 
 ## Releasing
 
-To make a new release, update the download URL and sha2 at the top of the formula in a PR branch (you do not need to touch the bottle section). Then *after* brew CI passes, add the label `!add-bottles` to your PR. You will usually need to close and reopen the PR after this, and then if it has been approved it can be merged even if it shows CI as still running. If there are any edits you make to the PR afterwards you'll need to rerun `!add-bottles`.
+The formula installs prebuilt binaries from [dfinity/icp-cli](https://github.com/dfinity/icp-cli) releases. To update the formula:
 
-Merging the PR should create the release. If the release publishing action fails for whatever reason, manually rerun it from the Actions page using the last commit ID *you* made in the PR (not the bot's commit, and not the PR merge commit).
+1. Ensure the icp-cli release is published with platform archives and `.sha256` checksum files.
+2. Go to **Actions > Update formula from icp-cli release** and dispatch the workflow with the release version (e.g., `0.3.0-beta.0`).
+3. The workflow fetches checksums, updates the formula's `version` and `sha256` lines, and creates a PR. Review and merge.
 
-PRs that *aren't* releases should be labeled `merge-without-publishing`. 
+To update manually, run `./scripts/update-icp-cli-beta.sh <version>` from the repo root.
 
 ## License
 
