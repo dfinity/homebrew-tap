@@ -15,7 +15,6 @@ jobs:
       pull-requests: write
     env:
       VERSION: ${{ inputs.version }}
-      TAG: v${{ inputs.version }}
     steps:
       - uses: actions/checkout@v4
 
@@ -35,5 +34,4 @@ jobs:
           git push -u origin "${branch}"
           gh pr create \
             --title "icp-cli-beta ${VERSION}" \
-            --body "Update icp-cli-beta to ${VERSION} from https://github.com/dfinity/icp-cli/releases/tag/${TAG}" \
-            --label "merge-without-publishing"
+            --body "Update icp-cli-beta to ${VERSION} from https://github.com/dfinity/icp-cli/releases/tag/v${VERSION}"
