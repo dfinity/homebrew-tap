@@ -34,7 +34,9 @@ class IcpCliBeta < Formula
   conflicts_with "icp-cli", because: "both install an `icp` binary"
 
   def install
-    bin.install "icp"
+    libexec.install "icp"
+    icp_env = { ICP_CLI_DIST: "homebrew-beta" }
+    (bin/"icp").write_env_script libexec/"icp", icp_env
   end
 
   test do
