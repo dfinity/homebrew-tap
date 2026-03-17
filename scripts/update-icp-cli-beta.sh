@@ -27,7 +27,7 @@ assert_line() {
     exit 1
   fi
 }
-assert_line 4  'version "'
+assert_line 10  'ver = "'
 assert_line 14 'sha256 "'
 assert_line 18 'sha256 "'
 assert_line 26 'sha256 "'
@@ -44,8 +44,8 @@ declare -A line_target=(
 # Read file into array
 mapfile -t lines < "$file"
 
-# Update version (line 4, array index 3)
-lines[3]="  version \"${version}\""
+# Update version (line 10, array index 9)
+lines[9]="  ver = \"${version}\""
 
 # Update sha256 lines
 for lineno in 14 18 26 30; do
