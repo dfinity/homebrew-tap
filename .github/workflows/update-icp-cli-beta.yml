@@ -21,9 +21,16 @@ jobs:
       - name: Fetch checksums and update formula
         run: ./scripts/update-icp-cli-beta.sh "$VERSION"
 
+      - name: Create GitHub App token
+        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: generate_token
+        with:
+          app-id: ${{ vars.PR_AUTOMATION_BOT_PUBLIC_APP_ID }}
+          private-key: ${{ secrets.PR_AUTOMATION_BOT_PUBLIC_PRIVATE_KEY }}
+
       - name: Create pull request
         env:
-          GH_TOKEN: ${{ secrets.PR_AUTOMATION_BOT_PUBLIC_PRIVATE_KEY }}
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
