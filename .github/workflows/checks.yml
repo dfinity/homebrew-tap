@@ -9,7 +9,7 @@ jobs:
   audit:
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
       - name: Set up tap
         run: |
           tap_dir="$(brew --repository)/Library/Taps/dfinity/homebrew-tap"
@@ -29,8 +29,8 @@ jobs:
           - runner: ubuntu-22.04-arm
     runs-on: ${{ matrix.runner }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: Homebrew/actions/setup-homebrew@master
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: Homebrew/actions/setup-homebrew@59e6b20d96df1a3c9ccb0aa402676e01a4cc6ff3 # master
       - name: Set up tap
         run: |
           tap_dir="$(brew --repository)/Library/Taps/dfinity/homebrew-tap"
