@@ -37,6 +37,8 @@ jobs:
           mkdir -p "$(dirname "$tap_dir")"
           ln -s "$GITHUB_WORKSPACE" "$tap_dir"
       - name: Install formula
+        env:
+          HOMEBREW_NO_SANDBOX_LINUX: 1
         run: brew install dfinity/tap/icp-cli-beta
       - name: Test
         run: icp --version
