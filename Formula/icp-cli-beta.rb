@@ -37,6 +37,8 @@ class IcpCliBeta < Formula
     libexec.install "icp"
     icp_env = { ICP_CLI_DIST: "homebrew-beta" }
     (bin/"icp").write_env_script libexec/"icp", icp_env
+
+    generate_completions_from_executable(libexec/"icp", "completions", base_name: "icp")
   end
 
   test do
