@@ -7,15 +7,15 @@ class IcpCliBeta < Formula
   depends_on "openssl@3"
   depends_on "zlib"
 
-  ver = "1.7.0"
+  ver = "1.8.0"
   on_macos do
     on_arm do
       url "https://github.com/dfinity/icp-cli/releases/download/v#{ver}/icp-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "f256a947351d1e7462982f72311f0b07c93062808452b8cb44aa4e867966bd4a"
+      sha256 "3c72156f20cd21b8e51599ff34b496f03eb40093df4eddf374ebab38c8c3643d"
     end
     on_intel do
       url "https://github.com/dfinity/icp-cli/releases/download/v#{ver}/icp-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "41e45af7dbf7f6d954491a9767f82b85e43a4cf2b01dc7a7caa924f461f5466c"
+      sha256 "96c2f1bc47c80acae6cb847262318a08d0d88e9222d41cd39f3ca64066a26014"
     end
   end
 
@@ -23,11 +23,11 @@ class IcpCliBeta < Formula
     depends_on "dbus"
     on_arm do
       url "https://github.com/dfinity/icp-cli/releases/download/v#{ver}/icp-cli-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "2dcb6595e2a5128713e9bec5cfcdb21ce594c613d4a463f05205fbb4d26ff47e"
+      sha256 "517e49465207e5f970745d03fecd683c99ee0220bcff02219293ea888a7c4a06"
     end
     on_intel do
       url "https://github.com/dfinity/icp-cli/releases/download/v#{ver}/icp-cli-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "aa5f0c102ae66e414fa43e119a249f4237998141b001cbccd523a81dadc7d01d"
+      sha256 "5c9aba0bd67645022779387f38d23a51d158624196ce4eba175aeba065eb2227"
     end
   end
 
