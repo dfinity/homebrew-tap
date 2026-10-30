@@ -13,10 +13,6 @@ class IcpCliBeta < Formula
       url "https://github.com/dfinity/icp-cli/releases/download/v#{ver}/icp-cli-aarch64-apple-darwin.tar.xz"
       sha256 "f256a947351d1e7462982f72311f0b07c93062808452b8cb44aa4e867966bd4a"
     end
-    on_intel do
-      url "https://github.com/dfinity/icp-cli/releases/download/v#{ver}/icp-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "41e45af7dbf7f6d954491a9767f82b85e43a4cf2b01dc7a7caa924f461f5466c"
-    end
   end
 
   on_linux do
